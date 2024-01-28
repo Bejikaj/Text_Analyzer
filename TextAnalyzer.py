@@ -39,6 +39,8 @@ garpike and stingray are also present.'''
 
 delimiter = "-" * 40
 asterisk = "*"
+separator1 = ["."]
+separator2 = [","]
 
 username = input("username: ")
 password = input("password: ")
@@ -64,7 +66,7 @@ else:
     print("Your password is incorrect.")
     exit()
 
-no_of_text_selection = int(input("Enter a nubmer btw. 1 and 3 to select:"))
+no_of_text_selection = int(input("Enter a number btw. 1 and 3 to select:"))
 
 if  0 < no_of_text_selection < 4:
     print(f"Text number {no_of_text_selection} selected.")
@@ -75,8 +77,16 @@ else:
 
 print(delimiter)
 
+text_to_str = str(TEXTS[no_of_text_selection - 1])
 
-text_to_count = str(TEXTS[no_of_text_selection - 1]).split()
+for separator in separator1:
+    TEXTS_adjusted_1 = text_to_str.replace(separator," ")
+
+for separator in separator2:
+    TEXTS_adjusted_2 = TEXTS_adjusted_1.replace(separator," ")
+
+
+text_to_count = TEXTS_adjusted_2.split()
 count_of_words_in_text = len(TEXTS[no_of_text_selection - 1].split())
 
 text_to_count_first_char = [letter[0] for letter in text_to_count]
